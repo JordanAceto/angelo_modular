@@ -1,0 +1,330 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 7 9
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L wave_folder:SSM2164 U?
+U 3 1 5EFD6227
+P 6200 2500
+AR Path="/5EF7B742/5EFD6227" Ref="U?"  Part="1" 
+AR Path="/5EFD02EE/5EFD6227" Ref="U1"  Part="3" 
+F 0 "U1" H 6300 2865 50  0000 C CNN
+F 1 "SSM2164" H 6300 2774 50  0000 C CNN
+F 2 "Package_DIP:DIP-16_W7.62mm" H 6300 2700 50  0001 C CNN
+F 3 "" H 6300 2700 50  0001 C CNN
+	3    6200 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5EFD6241
+P 5550 2500
+AR Path="/5EF7B742/5EFD6241" Ref="R?"  Part="1" 
+AR Path="/5EFD02EE/5EFD6241" Ref="R35"  Part="1" 
+F 0 "R35" V 5450 2500 50  0000 C CNN
+F 1 "27k" V 5550 2500 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5480 2500 50  0001 C CNN
+F 3 "~" H 5550 2500 50  0001 C CNN
+	1    5550 2500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5900 2500 5800 2500
+$Comp
+L Device:R R?
+U 1 1 5EFD6250
+P 5800 2750
+AR Path="/5EF7B742/5EFD6250" Ref="R?"  Part="1" 
+AR Path="/5EFD02EE/5EFD6250" Ref="R37"  Part="1" 
+F 0 "R37" H 5700 2750 50  0000 C CNN
+F 1 "510" V 5800 2750 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5730 2750 50  0001 C CNN
+F 3 "~" H 5800 2750 50  0001 C CNN
+	1    5800 2750
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5EFD6256
+P 5800 3050
+AR Path="/5EF7B742/5EFD6256" Ref="C?"  Part="1" 
+AR Path="/5EFD02EE/5EFD6256" Ref="C6"  Part="1" 
+F 0 "C6" H 5915 3096 50  0000 L CNN
+F 1 "560pF" H 5915 3005 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D4.3mm_W1.9mm_P5.00mm" H 5838 2900 50  0001 C CNN
+F 3 "~" H 5800 3050 50  0001 C CNN
+	1    5800 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5EFD625C
+P 5800 3200
+AR Path="/5EF7B742/5EFD625C" Ref="#PWR?"  Part="1" 
+AR Path="/5EFD02EE/5EFD625C" Ref="#PWR022"  Part="1" 
+F 0 "#PWR022" H 5800 2950 50  0001 C CNN
+F 1 "GND" H 5805 3027 50  0000 C CNN
+F 2 "" H 5800 3200 50  0001 C CNN
+F 3 "" H 5800 3200 50  0001 C CNN
+	1    5800 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5800 2600 5800 2500
+Connection ~ 5800 2500
+Wire Wire Line
+	5800 2500 5700 2500
+$Comp
+L power:GND #PWR?
+U 1 1 5EFD626B
+P 4200 5800
+AR Path="/5EF7B742/5EFD626B" Ref="#PWR?"  Part="1" 
+AR Path="/5EFD02EE/5EFD626B" Ref="#PWR020"  Part="1" 
+F 0 "#PWR020" H 4200 5550 50  0001 C CNN
+F 1 "GND" H 4205 5627 50  0000 C CNN
+F 2 "" H 4200 5800 50  0001 C CNN
+F 3 "" H 4200 5800 50  0001 C CNN
+	1    4200 5800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4200 5800 4200 5700
+Wire Wire Line
+	4200 5700 4300 5700
+$Comp
+L Device:C C?
+U 1 1 5EFD6273
+P 4550 5200
+AR Path="/5EF7B742/5EFD6273" Ref="C?"  Part="1" 
+AR Path="/5EFD02EE/5EFD6273" Ref="C4"  Part="1" 
+F 0 "C4" V 4298 5200 50  0000 C CNN
+F 1 "100pF" V 4389 5200 50  0000 C CNN
+F 2 "Capacitor_THT:C_Disc_D4.3mm_W1.9mm_P5.00mm" H 4588 5050 50  0001 C CNN
+F 3 "~" H 4550 5200 50  0001 C CNN
+	1    4550 5200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4400 5200 4200 5200
+Wire Wire Line
+	4200 5200 4200 5500
+Wire Wire Line
+	4200 5500 4300 5500
+Wire Wire Line
+	5000 5600 5000 5200
+Wire Wire Line
+	5000 5200 4700 5200
+Wire Wire Line
+	4900 5600 5000 5600
+$Comp
+L wave_folder:SSM2164 U?
+U 4 1 5EFD627F
+P 5000 4500
+AR Path="/5EF7B742/5EFD627F" Ref="U?"  Part="2" 
+AR Path="/5EFD02EE/5EFD627F" Ref="U1"  Part="4" 
+F 0 "U1" H 5100 4865 50  0000 C CNN
+F 1 "SSM2164" H 5100 4774 50  0000 C CNN
+F 2 "Package_DIP:DIP-16_W7.62mm" H 5100 4700 50  0001 C CNN
+F 3 "" H 5100 4700 50  0001 C CNN
+	4    5000 4500
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	5000 4800 5000 5200
+Connection ~ 5000 5200
+Wire Wire Line
+	4200 5200 4200 4500
+Wire Wire Line
+	4200 4500 4500 4500
+Connection ~ 4200 5200
+$Comp
+L Device:R R?
+U 1 1 5EFD628A
+P 5650 4500
+AR Path="/5EF7B742/5EFD628A" Ref="R?"  Part="1" 
+AR Path="/5EFD02EE/5EFD628A" Ref="R36"  Part="1" 
+F 0 "R36" V 5550 4500 50  0000 C CNN
+F 1 "240k" V 5650 4500 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5580 4500 50  0001 C CNN
+F 3 "~" H 5650 4500 50  0001 C CNN
+	1    5650 4500
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5EFD6290
+P 5400 4750
+AR Path="/5EF7B742/5EFD6290" Ref="R?"  Part="1" 
+AR Path="/5EFD02EE/5EFD6290" Ref="R34"  Part="1" 
+F 0 "R34" H 5300 4750 50  0000 C CNN
+F 1 "510" V 5400 4750 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5330 4750 50  0001 C CNN
+F 3 "~" H 5400 4750 50  0001 C CNN
+	1    5400 4750
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 5EFD6296
+P 5400 5050
+AR Path="/5EF7B742/5EFD6296" Ref="C?"  Part="1" 
+AR Path="/5EFD02EE/5EFD6296" Ref="C5"  Part="1" 
+F 0 "C5" H 5515 5096 50  0000 L CNN
+F 1 "560pF" H 5515 5005 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D4.3mm_W1.9mm_P5.00mm" H 5438 4900 50  0001 C CNN
+F 3 "~" H 5400 5050 50  0001 C CNN
+	1    5400 5050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5EFD629C
+P 5400 5200
+AR Path="/5EF7B742/5EFD629C" Ref="#PWR?"  Part="1" 
+AR Path="/5EFD02EE/5EFD629C" Ref="#PWR021"  Part="1" 
+F 0 "#PWR021" H 5400 4950 50  0001 C CNN
+F 1 "GND" H 5405 5027 50  0000 C CNN
+F 2 "" H 5400 5200 50  0001 C CNN
+F 3 "" H 5400 5200 50  0001 C CNN
+	1    5400 5200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5500 4500 5400 4500
+Wire Wire Line
+	5400 4500 5400 4600
+Connection ~ 5400 4500
+Wire Wire Line
+	5400 4500 5300 4500
+$Comp
+L power:-12V #PWR?
+U 1 1 5EFD62A6
+P 5900 4600
+AR Path="/5EF7B742/5EFD62A6" Ref="#PWR?"  Part="1" 
+AR Path="/5EFD02EE/5EFD62A6" Ref="#PWR023"  Part="1" 
+F 0 "#PWR023" H 5900 4700 50  0001 C CNN
+F 1 "-12V" H 5915 4773 50  0000 C CNN
+F 2 "" H 5900 4600 50  0001 C CNN
+F 3 "" H 5900 4600 50  0001 C CNN
+	1    5900 4600
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	5900 4600 5900 4500
+Wire Wire Line
+	5900 4500 5800 4500
+$Comp
+L Device:R R?
+U 1 1 5EFD62AE
+P 5250 5600
+AR Path="/5EF7B742/5EFD62AE" Ref="R?"  Part="1" 
+AR Path="/5EFD02EE/5EFD62AE" Ref="R33"  Part="1" 
+F 0 "R33" V 5150 5600 50  0000 C CNN
+F 1 "4k7" V 5250 5600 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5180 5600 50  0001 C CNN
+F 3 "~" H 5250 5600 50  0001 C CNN
+	1    5250 5600
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5100 5600 5000 5600
+Connection ~ 5000 5600
+Wire Wire Line
+	5400 5600 6200 5600
+Wire Wire Line
+	6200 5600 6200 2800
+$Comp
+L Device:R R?
+U 1 1 5EFD62B8
+P 3950 4500
+AR Path="/5EF7B742/5EFD62B8" Ref="R?"  Part="1" 
+AR Path="/5EFD02EE/5EFD62B8" Ref="R30"  Part="1" 
+F 0 "R30" V 3850 4500 50  0000 C CNN
+F 1 "10M" V 3950 4500 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 3880 4500 50  0001 C CNN
+F 3 "~" H 3950 4500 50  0001 C CNN
+	1    3950 4500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4100 4500 4200 4500
+Connection ~ 4200 4500
+$Comp
+L power:-12V #PWR?
+U 1 1 5EFD62C0
+P 3700 4600
+AR Path="/5EF7B742/5EFD62C0" Ref="#PWR?"  Part="1" 
+AR Path="/5EFD02EE/5EFD62C0" Ref="#PWR019"  Part="1" 
+F 0 "#PWR019" H 3700 4700 50  0001 C CNN
+F 1 "-12V" H 3715 4773 50  0000 C CNN
+F 2 "" H 3700 4600 50  0001 C CNN
+F 3 "" H 3700 4600 50  0001 C CNN
+	1    3700 4600
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	3700 4600 3700 4500
+Wire Wire Line
+	3700 4500 3800 4500
+$Comp
+L Device:R R?
+U 1 1 5EFD62C8
+P 3950 5500
+AR Path="/5EF7B742/5EFD62C8" Ref="R?"  Part="1" 
+AR Path="/5EFD02EE/5EFD62C8" Ref="R32"  Part="1" 
+F 0 "R32" V 3850 5500 50  0000 C CNN
+F 1 "220k" V 3950 5500 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 3880 5500 50  0001 C CNN
+F 3 "~" H 3950 5500 50  0001 C CNN
+	1    3950 5500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4100 5500 4200 5500
+Connection ~ 4200 5500
+$Comp
+L Device:R R?
+U 1 1 5EFD62D0
+P 3950 5200
+AR Path="/5EF7B742/5EFD62D0" Ref="R?"  Part="1" 
+AR Path="/5EFD02EE/5EFD62D0" Ref="R31"  Part="1" 
+F 0 "R31" V 3850 5200 50  0000 C CNN
+F 1 "100k" V 3950 5200 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 3880 5200 50  0001 C CNN
+F 3 "~" H 3950 5200 50  0001 C CNN
+	1    3950 5200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4100 5200 4200 5200
+Text HLabel 5400 2500 0    50   Input ~ 0
+shape_VCA_signal_in
+Text HLabel 6700 2500 2    50   Output ~ 0
+shape_VCA_signal_i_out
+Text HLabel 3800 5200 0    50   Input ~ 0
+shape_VCA_CV_in
+Text HLabel 3800 5500 0    50   Input ~ 0
+shape_VCA_manual_in
+$Comp
+L Amplifier_Operational:TL072 U2
+U 2 1 5EFDE3E3
+P 4600 5600
+F 0 "U2" H 4750 5900 50  0000 C CNN
+F 1 "TL072" H 4750 5750 50  0000 C CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 4600 5600 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tl071.pdf" H 4600 5600 50  0001 C CNN
+	2    4600 5600
+	1    0    0    1   
+$EndComp
+$EndSCHEMATC

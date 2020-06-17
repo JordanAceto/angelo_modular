@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name five_pulser_parts)(type Legacy)(uri ${KIPRJMOD}/five_pulser_parts.lib)(options "")(descr ""))
+)

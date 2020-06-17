@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name dual_VCA)(type Legacy)(uri ${KIPRJMOD}/dual_VCA.lib)(options "")(descr ""))
+  (lib (name eurocad)(type Legacy)(uri ${KIPRJMOD}/eurocad-master/eurocad.lib)(options "")(descr ""))
+)

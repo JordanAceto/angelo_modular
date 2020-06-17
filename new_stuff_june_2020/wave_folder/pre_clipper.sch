@@ -1,0 +1,167 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 6 6
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Amplifier_Operational:TL072 U?
+U 1 1 5EFEB045
+P 5450 3950
+F 0 "U?" H 5600 4250 50  0000 C CNN
+F 1 "TL072" H 5600 4150 50  0000 C CNN
+F 2 "" H 5450 3950 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/tl071.pdf" H 5450 3950 50  0001 C CNN
+	1    5450 3950
+	1    0    0    1   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5EFECB98
+P 5450 3550
+F 0 "R?" V 5350 3550 50  0000 C CNN
+F 1 "100k" V 5450 3550 50  0000 C CNN
+F 2 "" V 5380 3550 50  0001 C CNN
+F 3 "~" H 5450 3550 50  0001 C CNN
+	1    5450 3550
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5EFED73F
+P 5850 3300
+F 0 "R?" H 5750 3300 50  0000 C CNN
+F 1 "33k" V 5850 3300 50  0000 C CNN
+F 2 "" V 5780 3300 50  0001 C CNN
+F 3 "~" H 5850 3300 50  0001 C CNN
+	1    5850 3300
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:D D?
+U 1 1 5EFEEA1A
+P 5450 3050
+F 0 "D?" H 5450 3267 50  0000 C CNN
+F 1 "D" H 5450 3176 50  0000 C CNN
+F 2 "" H 5450 3050 50  0001 C CNN
+F 3 "~" H 5450 3050 50  0001 C CNN
+	1    5450 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:D D?
+U 1 1 5EFEECEF
+P 5450 2700
+F 0 "D?" H 5450 2483 50  0000 C CNN
+F 1 "D" H 5450 2574 50  0000 C CNN
+F 2 "" H 5450 2700 50  0001 C CNN
+F 3 "~" H 5450 2700 50  0001 C CNN
+	1    5450 2700
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5EFEF5AA
+P 4800 3850
+F 0 "R?" V 4700 3850 50  0000 C CNN
+F 1 "100k" V 4800 3850 50  0000 C CNN
+F 2 "" V 4730 3850 50  0001 C CNN
+F 3 "~" H 4800 3850 50  0001 C CNN
+	1    4800 3850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5150 3850 5050 3850
+Wire Wire Line
+	5050 3850 5050 3550
+Wire Wire Line
+	5050 3550 5300 3550
+Connection ~ 5050 3850
+Wire Wire Line
+	5050 3850 4950 3850
+Wire Wire Line
+	5600 3550 5850 3550
+Wire Wire Line
+	5850 3550 5850 3950
+Wire Wire Line
+	5850 3950 5750 3950
+Wire Wire Line
+	5850 3550 5850 3450
+Connection ~ 5850 3550
+$Comp
+L Device:R R?
+U 1 1 5EFF07DE
+P 6100 2700
+F 0 "R?" V 6200 2700 50  0000 C CNN
+F 1 "2k7" V 6100 2700 50  0000 C CNN
+F 2 "" V 6030 2700 50  0001 C CNN
+F 3 "~" H 6100 2700 50  0001 C CNN
+	1    6100 2700
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5950 2700 5850 2700
+Wire Wire Line
+	5850 2700 5850 3050
+Wire Wire Line
+	5850 2700 5600 2700
+Connection ~ 5850 2700
+Wire Wire Line
+	5600 3050 5850 3050
+Connection ~ 5850 3050
+Wire Wire Line
+	5850 3050 5850 3150
+Wire Wire Line
+	5300 2700 5050 2700
+Wire Wire Line
+	5050 2700 5050 3050
+Connection ~ 5050 3550
+Wire Wire Line
+	5300 3050 5050 3050
+Connection ~ 5050 3050
+Wire Wire Line
+	5050 3050 5050 3550
+$Comp
+L power:GND #PWR?
+U 1 1 5EFF2F46
+P 6350 2800
+F 0 "#PWR?" H 6350 2550 50  0001 C CNN
+F 1 "GND" H 6355 2627 50  0000 C CNN
+F 2 "" H 6350 2800 50  0001 C CNN
+F 3 "" H 6350 2800 50  0001 C CNN
+	1    6350 2800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6350 2800 6350 2700
+Wire Wire Line
+	6350 2700 6250 2700
+$Comp
+L power:GND #PWR?
+U 1 1 5EFF3495
+P 5050 4150
+F 0 "#PWR?" H 5050 3900 50  0001 C CNN
+F 1 "GND" H 5055 3977 50  0000 C CNN
+F 2 "" H 5050 4150 50  0001 C CNN
+F 3 "" H 5050 4150 50  0001 C CNN
+	1    5050 4150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5050 4150 5050 4050
+Wire Wire Line
+	5050 4050 5150 4050
+Text HLabel 4650 3850 0    50   Input ~ 0
+pre_clipper_in
+Text HLabel 5850 3950 2    50   Output ~ 0
+pre_clipper_out
+$EndSCHEMATC

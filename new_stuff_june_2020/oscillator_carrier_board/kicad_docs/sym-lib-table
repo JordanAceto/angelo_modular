@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name eurocad)(type Legacy)(uri ${KIPRJMOD}/eurocad-master/eurocad.lib)(options "")(descr ""))
+  (lib (name oscillator_carrier_board-rescue)(type Legacy)(uri ${KIPRJMOD}/oscillator_carrier_board-rescue.lib)(options "")(descr ""))
+  (lib (name osc_carrier_board_parts)(type Legacy)(uri ${KIPRJMOD}/osc_carrier_board_parts.lib)(options "")(descr ""))
+)
