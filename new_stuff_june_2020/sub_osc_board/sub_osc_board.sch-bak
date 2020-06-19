@@ -140,7 +140,7 @@ L Connector_Generic:Conn_01x05 J1
 U 1 1 5EE62E5E
 P 1800 1150
 F 0 "J1" H 1718 1567 50  0000 C CNN
-F 1 "Conn_01x05" H 1718 1476 50  0000 C CNN
+F 1 "signal_inputs" H 1718 1476 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 1800 1150 50  0001 C CNN
 F 3 "~" H 1800 1150 50  0001 C CNN
 	1    1800 1150
@@ -151,7 +151,7 @@ L Connector_Generic:Conn_01x03 J2
 U 1 1 5EE64AB2
 P 1800 2400
 F 0 "J2" H 1718 2717 50  0000 C CNN
-F 1 "Conn_01x03" H 1718 2626 50  0000 C CNN
+F 1 "pwm_inputs" H 1718 2626 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 1800 2400 50  0001 C CNN
 F 3 "~" H 1800 2400 50  0001 C CNN
 	1    1800 2400
@@ -206,7 +206,7 @@ L Connector_Generic:Conn_01x05 J4
 U 1 1 5EE87536
 P 10450 5750
 F 0 "J4" H 10530 5792 50  0000 L CNN
-F 1 "Conn_01x05" H 10530 5701 50  0000 L CNN
+F 1 "signal_outputs" H 10530 5701 50  0000 L CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 10450 5750 50  0001 C CNN
 F 3 "~" H 10450 5750 50  0001 C CNN
 	1    10450 5750
@@ -607,4 +607,10 @@ Text Label 9700 5850 2    50   ~ 0
 mix_out
 Text Label 4250 1100 2    50   ~ 0
 saw_in
+Text Notes 2650 3750 0    50   ~ 0
+octave 1 wave select switch\nSPDT center off
+Text Notes 5450 3800 0    50   ~ 0
+octave 2 wave select switch\nSPDT center off
+Text Notes 8750 3800 0    50   ~ 0
+octave 3 wave select switch\nSPDT center off
 $EndSCHEMATC

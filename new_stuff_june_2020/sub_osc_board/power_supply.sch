@@ -801,7 +801,7 @@ P 6100 7200
 AR Path="/5EF9A242" Ref="J?"  Part="1" 
 AR Path="/5EE5F4A3/5EF9A242" Ref="J3"  Part="1" 
 F 0 "J3" H 6150 7617 50  0000 C CNN
-F 1 "Conn_02x05_Odd_Even" H 6150 7526 50  0000 C CNN
+F 1 "power_input" H 6150 7526 50  0000 C CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical" H 6100 7200 50  0001 C CNN
 F 3 "~" H 6100 7200 50  0001 C CNN
 	1    6100 7200

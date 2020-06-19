@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name slope_generators)(type KiCad)(uri ${KIPRJMOD}/slope_generators.pretty)(options "")(descr ""))
+)
