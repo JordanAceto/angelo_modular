@@ -329,8 +329,6 @@ Wire Wire Line
 	3500 6950 3500 6650
 Text Label 2300 6650 2    50   ~ 0
 high_pass
-Text Label 2300 6950 2    50   ~ 0
-low_pass
 Text Label 5350 7050 0    50   ~ 0
 summed_hp_lp
 Text Label 4500 1150 0    50   ~ 0
@@ -1015,4 +1013,34 @@ F 3 "" H 10050 1800 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 Connection ~ 10050 1800
+$Comp
+L Connector_Generic:Conn_01x02 J4
+U 1 1 5EE9E46C
+P 1400 6950
+F 0 "J4" H 1318 7167 50  0000 C CNN
+F 1 "lpf_output_normal" H 1318 7076 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 1400 6950 50  0001 C CNN
+F 3 "~" H 1400 6950 50  0001 C CNN
+	1    1400 6950
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5EEABD21
+P 1700 7150
+AR Path="/5F07E327/5EEABD21" Ref="#PWR?"  Part="1" 
+AR Path="/5EEABD21" Ref="#PWR040"  Part="1" 
+F 0 "#PWR040" H 1700 6900 50  0001 C CNN
+F 1 "GND" H 1705 6977 50  0000 C CNN
+F 2 "" H 1700 7150 50  0001 C CNN
+F 3 "" H 1700 7150 50  0001 C CNN
+	1    1700 7150
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	1700 7150 1700 7050
+Wire Wire Line
+	1700 7050 1600 7050
+Wire Wire Line
+	1600 6950 2300 6950
 $EndSCHEMATC
