@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name dual_ADSR)(type KiCad)(uri ${KIPRJMOD}/dual_ADSR.pretty)(options "")(descr ""))
+)
