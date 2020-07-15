@@ -1,0 +1,11 @@
+main.c:355:5:main	16	static
+main.c:423:6:SystemClock_Config	88	static
+main.c:469:6:HAL_TIM_PeriodElapsedCallback	16	static
+main.c:483:6:HAL_SYSTICK_Callback	8	static
+main.c:501:6:tick_ADSRs	16	static
+main.c:509:6:poll_gate_and_trigger_inputs	16	static
+main.c:536:6:poll_range_switches	16	static
+main.c:553:6:scale_potentiometer_readings	56	static
+main.c:610:6:update_ADSR_inputs	16	static
+main.c:625:6:update_DACs	8	static
+main.c:638:6:Error_Handler	4	static

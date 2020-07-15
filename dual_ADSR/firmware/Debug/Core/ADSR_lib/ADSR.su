@@ -1,0 +1,11 @@
+ADSR.c:263:6:ADSR_Initialize_Look_Up_Tables	96	static
+ADSR.c:319:6:Initialize_ADSR	16	static
+ADSR.c:339:6:ADSR_Tick	16	static
+ADSR.c:354:6:ADSR_Gate_On_Event	16	static
+ADSR.c:369:6:ADSR_Gate_Off_Event	16	static
+ADSR.c:395:10:Current_ADSR_State_Is_Tickable	24	static
+ADSR.c:404:6:Calculate_Tuning_Word_And_Increment_Accumulator	56	static
+ADSR.c:416:6:Handle_State_Transitions	24	static
+ADSR.c:431:6:Advance_ADSR_State	16	static
+ADSR.c:461:6:Calculate_Current_ADSR_Value	72	static
+ADSR.c:560:10:Linear_Interpolation	32	static
