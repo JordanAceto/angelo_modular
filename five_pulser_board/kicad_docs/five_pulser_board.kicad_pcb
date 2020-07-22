@@ -10,6 +10,15 @@
   )
 
   (page A4)
+  (title_block
+    (title "Five Pulser")
+    (date 2020-07-22)
+    (rev 0)
+    (comment 1 creativecommons.org/licenses/by/4.0/)
+    (comment 2 "License: CC by 4.0")
+    (comment 3 "Author: Jordan Aceto")
+  )
+
   (layers
     (0 F.Cu signal)
     (31 B.Cu signal)
