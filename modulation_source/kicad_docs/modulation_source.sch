@@ -4,13 +4,13 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title ""
-Date ""
-Rev ""
+Title "Modulation Source"
+Date "2020-07-22"
+Rev "0"
 Comp ""
-Comment1 ""
-Comment2 ""
-Comment3 ""
+Comment1 "creativecommons.org/licenses/by/4.0/"
+Comment2 "License: CC by 4.0"
+Comment3 "Author: Jordan Aceto"
 Comment4 ""
 $EndDescr
 $Comp
@@ -1942,4 +1942,39 @@ F 3 "~" H 1650 1200 50  0001 C CNN
 	1    1650 1200
 	0    1    1    0   
 $EndComp
+$Comp
+L power:PWR_FLAG #FLG0101
+U 1 1 5F19C27A
+P 6350 6800
+F 0 "#FLG0101" H 6350 6875 50  0001 C CNN
+F 1 "PWR_FLAG" V 6350 6928 50  0000 L CNN
+F 2 "" H 6350 6800 50  0001 C CNN
+F 3 "~" H 6350 6800 50  0001 C CNN
+	1    6350 6800
+	0    1    1    0   
+$EndComp
+Connection ~ 6350 6800
+$Comp
+L power:PWR_FLAG #FLG0102
+U 1 1 5F19D617
+P 6350 7000
+F 0 "#FLG0102" H 6350 7075 50  0001 C CNN
+F 1 "PWR_FLAG" V 6350 7128 50  0000 L CNN
+F 2 "" H 6350 7000 50  0001 C CNN
+F 3 "~" H 6350 7000 50  0001 C CNN
+	1    6350 7000
+	0    1    1    0   
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG0103
+U 1 1 5F19D88A
+P 6350 7200
+F 0 "#FLG0103" H 6350 7275 50  0001 C CNN
+F 1 "PWR_FLAG" V 6350 7328 50  0000 L CNN
+F 2 "" H 6350 7200 50  0001 C CNN
+F 3 "~" H 6350 7200 50  0001 C CNN
+	1    6350 7200
+	0    1    1    0   
+$EndComp
+Connection ~ 6350 7200
 $EndSCHEMATC

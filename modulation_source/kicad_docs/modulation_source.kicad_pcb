@@ -1,4 +1,4 @@
-(kicad_pcb (version 20171130) (host pcbnew 5.1.6-c6e7f7d~86~ubuntu18.04.1)
+(kicad_pcb (version 20171130) (host pcbnew 5.1.6-c6e7f7d~87~ubuntu18.04.1)
 
   (general
     (thickness 1.6)
@@ -10,6 +10,15 @@
   )
 
   (page A4)
+  (title_block
+    (title "Modulation Source")
+    (date 2020-07-22)
+    (rev 0)
+    (comment 1 creativecommons.org/licenses/by/4.0/)
+    (comment 2 "License: CC by 4.0")
+    (comment 3 "Author: Jordan Aceto")
+  )
+
   (layers
     (0 F.Cu signal)
     (31 B.Cu signal)
