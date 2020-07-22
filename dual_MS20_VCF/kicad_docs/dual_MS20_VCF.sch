@@ -5,12 +5,12 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 3
 Title ""
-Date ""
-Rev ""
+Date "2020-07-22"
+Rev "0"
 Comp ""
-Comment1 ""
-Comment2 ""
-Comment3 ""
+Comment1 "creativecommons.org/licences/by/4.0"
+Comment2 "License: CC by 4.0"
+Comment3 "Author: Jordan Aceto"
 Comment4 ""
 $EndDescr
 $Sheet
