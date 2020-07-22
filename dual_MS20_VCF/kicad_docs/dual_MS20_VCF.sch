@@ -4,7 +4,7 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 3
-Title ""
+Title "Dual MS20 VCF"
 Date "2020-07-22"
 Rev "0"
 Comp ""
