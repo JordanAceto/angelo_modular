@@ -1,13 +1,31 @@
-# This is currently just a dumping ground for schematics and pcb layouts as I spruce up an old modular project. 
+## Custom 5u format modular synth with 12 modules.
 
-## The synth is a custom 5u format modular with space for 12 modules. It generally follows the electronotes standards of +/-5 volt waveforms, 100k input impedance, and 1k output impedance. It was originally all built on perf-board. I am now remaking most of the modules with manufactured pcbs, and generally sprucing things up. I also hope to improve the documentation.
+### Modules:
+- VCO with 5-pulser waveshaper
+- VCO with two sub-oscillators
+- VCO with LFO range switch
+- Voltage controlled wavefolder plus ring-modulator
+- Voltage controlled filter with swapable filter-core plug-in boards
+- Dual late MS20 style voltage controlled filter
+- MIDI to CV plus audio input processor
+- Dual 3-input DC coupled mixer
+- Modulation source with voltage controlled LFO, sample-and-hold, and white noise source
+- Dual Serge style slope generator
+- Dual ADSR
+- Dual VCA
 
-## this repo is a work in progress and a snapshot in time.
+### User manuals can be found in the `/user_manuals/` directory. This directory also contains a document outlining any pcb kludges or changes on the current system.
 
-### When finished, each module subdirectory should have:
-- complete and correct kicad docs for the schematic and pcb
-- zipped gerbers
-- an interactive BOM
-- a user manual, or at least a quick readme with calibration instructions
-- a pdf copy of the schematic
-- power supply current requirements noted somewhere
+### Documentation for the pcbs is in the `/circuit_boards/` directory
+
+#### Documentation for each pcb consists of the following:
+- A very brief README outlining the basics of the pcb
+
+- A `/construction_docs/` subdirectory which contains:
+  - Gerbers for the circuit board
+  - An interactive BOM which can be opened in a web browser
+  - A pdf schematic
+
+- A `/kicad_docs/` subdirectory which contains the files needed to open the project in kicad
+
+- A `/pics/` subdirectory which contains a few rendered pictures of the pcb for reference
