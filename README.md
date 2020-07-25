@@ -14,9 +14,9 @@
 - Dual ADSR
 - Dual VCA
 
-### User manuals can be found in the `/user_manuals/` directory. This directory also contains a document outlining any pcb kludges or changes on the current system.
+### User manuals can be found in the `/user_manuals/` directory. This directory also contains a document outlining any pcb kludges or changes to the current system.
 
-### Documentation for the pcbs is in the `/circuit_boards/` directory
+### Documentation for the pcbs is in the `/pcb_docs/` directory
 
 #### Documentation for each pcb consists of the following:
 - A very brief README outlining the basics of the pcb
