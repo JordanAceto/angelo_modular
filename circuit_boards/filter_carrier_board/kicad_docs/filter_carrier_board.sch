@@ -4,13 +4,13 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title ""
-Date ""
-Rev ""
+Title "VCF carrier board"
+Date "2020-07-25"
+Rev "0"
 Comp ""
-Comment1 ""
-Comment2 ""
-Comment3 ""
+Comment1 "creativecommons.org/licenses/by/4.0/"
+Comment2 "License: CC by 4.0"
+Comment3 "Author: Jordan Aceto"
 Comment4 ""
 $EndDescr
 $Comp
@@ -911,38 +911,38 @@ Connection ~ 9350 6300
 $Comp
 L Connector_Generic:Conn_02x05_Odd_Even J10
 U 1 1 5F369E6B
-P 7100 5850
-F 0 "J10" H 7150 6267 50  0000 C CNN
-F 1 "Conn_02x05_Odd_Even" H 7150 6176 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical" H 7100 5850 50  0001 C CNN
-F 3 "~" H 7100 5850 50  0001 C CNN
-	1    7100 5850
+P 6850 5850
+F 0 "J10" H 6900 6267 50  0000 C CNN
+F 1 "Conn_02x05_Odd_Even" H 6900 6176 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical" H 6850 5850 50  0001 C CNN
+F 3 "~" H 6850 5850 50  0001 C CNN
+	1    6850 5850
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6900 5650 7400 5650
+	6650 5650 7150 5650
 Wire Wire Line
-	7400 5750 7400 5850
+	7150 5750 7150 5850
 Wire Wire Line
-	7400 5850 7400 5950
-Connection ~ 7400 5850
+	7150 5850 7150 5950
+Connection ~ 7150 5850
 Wire Wire Line
-	7400 5950 6900 5950
-Connection ~ 7400 5950
+	7150 5950 6650 5950
+Connection ~ 7150 5950
 Wire Wire Line
-	6900 5950 6900 5850
-Connection ~ 6900 5950
+	6650 5950 6650 5850
+Connection ~ 6650 5950
 Wire Wire Line
-	6900 5850 6900 5750
-Connection ~ 6900 5850
+	6650 5850 6650 5750
+Connection ~ 6650 5850
 Wire Wire Line
-	6900 5750 7400 5750
-Connection ~ 6900 5750
-Connection ~ 7400 5750
+	6650 5750 7150 5750
+Connection ~ 6650 5750
+Connection ~ 7150 5750
 Wire Wire Line
-	7400 5850 6900 5850
+	7150 5850 6650 5850
 Wire Wire Line
-	6900 6050 7400 6050
+	6650 6050 7150 6050
 $Comp
 L power:GND #PWR030
 U 1 1 5F35F0B9
@@ -957,38 +957,38 @@ $EndComp
 $Comp
 L power:+12V #PWR032
 U 1 1 5F3B2788
-P 6900 5650
-F 0 "#PWR032" H 6900 5500 50  0001 C CNN
-F 1 "+12V" V 6915 5778 50  0000 L CNN
-F 2 "" H 6900 5650 50  0001 C CNN
-F 3 "" H 6900 5650 50  0001 C CNN
-	1    6900 5650
+P 6650 5650
+F 0 "#PWR032" H 6650 5500 50  0001 C CNN
+F 1 "+12V" V 6665 5778 50  0000 L CNN
+F 2 "" H 6650 5650 50  0001 C CNN
+F 3 "" H 6650 5650 50  0001 C CNN
+	1    6650 5650
 	0    -1   -1   0   
 $EndComp
-Connection ~ 6900 5650
+Connection ~ 6650 5650
 $Comp
 L power:GND #PWR033
 U 1 1 5F3BBB3F
-P 6900 5850
-F 0 "#PWR033" H 6900 5600 50  0001 C CNN
-F 1 "GND" V 6905 5722 50  0000 R CNN
-F 2 "" H 6900 5850 50  0001 C CNN
-F 3 "" H 6900 5850 50  0001 C CNN
-	1    6900 5850
+P 6650 5850
+F 0 "#PWR033" H 6650 5600 50  0001 C CNN
+F 1 "GND" V 6655 5722 50  0000 R CNN
+F 2 "" H 6650 5850 50  0001 C CNN
+F 3 "" H 6650 5850 50  0001 C CNN
+	1    6650 5850
 	0    1    1    0   
 $EndComp
 $Comp
 L power:-12V #PWR034
 U 1 1 5F3BC557
-P 6900 6050
-F 0 "#PWR034" H 6900 6150 50  0001 C CNN
-F 1 "-12V" V 6915 6178 50  0000 L CNN
-F 2 "" H 6900 6050 50  0001 C CNN
-F 3 "" H 6900 6050 50  0001 C CNN
-	1    6900 6050
+P 6650 6050
+F 0 "#PWR034" H 6650 6150 50  0001 C CNN
+F 1 "-12V" V 6665 6178 50  0000 L CNN
+F 2 "" H 6650 6050 50  0001 C CNN
+F 3 "" H 6650 6050 50  0001 C CNN
+	1    6650 6050
 	0    -1   -1   0   
 $EndComp
-Connection ~ 6900 6050
+Connection ~ 6650 6050
 Text Notes 8950 1150 0    50   ~ 0
 Tnis carrier board is designed to accomodate\nvarious VCF plug-in boards. These plug-in boards\nshare a consistent footprint and voltage standard.\n\nVCF plug in boards expect CV in the range 0 to +2.048v.\nThis range is the same for both frequency control\nvoltage as well as resonance control coltage.
 $Comp
@@ -1628,4 +1628,39 @@ Connection ~ 10350 5300
 Connection ~ 10350 6300
 Text Notes 5100 3050 0    50   ~ 0
 approximately\n0 to +2.048 volts
+$Comp
+L power:PWR_FLAG #FLG0101
+U 1 1 5F1ECBD4
+P 7150 5650
+F 0 "#FLG0101" H 7150 5725 50  0001 C CNN
+F 1 "PWR_FLAG" V 7150 5778 50  0000 L CNN
+F 2 "" H 7150 5650 50  0001 C CNN
+F 3 "~" H 7150 5650 50  0001 C CNN
+	1    7150 5650
+	0    1    1    0   
+$EndComp
+Connection ~ 7150 5650
+$Comp
+L power:PWR_FLAG #FLG0102
+U 1 1 5F1EDF5F
+P 7150 5850
+F 0 "#FLG0102" H 7150 5925 50  0001 C CNN
+F 1 "PWR_FLAG" V 7150 5978 50  0000 L CNN
+F 2 "" H 7150 5850 50  0001 C CNN
+F 3 "~" H 7150 5850 50  0001 C CNN
+	1    7150 5850
+	0    1    1    0   
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG0103
+U 1 1 5F1EE3C6
+P 7150 6050
+F 0 "#FLG0103" H 7150 6125 50  0001 C CNN
+F 1 "PWR_FLAG" V 7150 6178 50  0000 L CNN
+F 2 "" H 7150 6050 50  0001 C CNN
+F 3 "~" H 7150 6050 50  0001 C CNN
+	1    7150 6050
+	0    1    1    0   
+$EndComp
+Connection ~ 7150 6050
 $EndSCHEMATC
