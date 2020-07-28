@@ -7,5 +7,5 @@ ADSR.c:395:10:Current_ADSR_State_Is_Tickable	24	static
 ADSR.c:404:6:Calculate_Tuning_Word_And_Increment_Accumulator	56	static
 ADSR.c:416:6:Handle_State_Transitions	24	static
 ADSR.c:431:6:Advance_ADSR_State	16	static
-ADSR.c:461:6:Calculate_Current_ADSR_Value	72	static
-ADSR.c:560:10:Linear_Interpolation	32	static
+ADSR.c:461:6:Calculate_Current_ADSR_Value	80	static
+ADSR.c:561:10:Linear_Interpolation	48	static

@@ -61,7 +61,7 @@ void MX_ADC1_Init(void)
   }
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time. 
   */
-  sConfig.Channel = ADC_CHANNEL_1;
+  sConfig.Channel = ADC_CHANNEL_2;
   sConfig.Rank = 2;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
@@ -69,7 +69,7 @@ void MX_ADC1_Init(void)
   }
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time. 
   */
-  sConfig.Channel = ADC_CHANNEL_2;
+  sConfig.Channel = ADC_CHANNEL_1;
   sConfig.Rank = 3;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
@@ -77,7 +77,7 @@ void MX_ADC1_Init(void)
   }
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time. 
   */
-  sConfig.Channel = ADC_CHANNEL_3;
+  sConfig.Channel = ADC_CHANNEL_6;
   sConfig.Rank = 4;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
@@ -85,7 +85,7 @@ void MX_ADC1_Init(void)
   }
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time. 
   */
-  sConfig.Channel = ADC_CHANNEL_6;
+  sConfig.Channel = ADC_CHANNEL_3;
   sConfig.Rank = 5;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
@@ -142,8 +142,8 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
     PB0     ------> ADC1_IN8
     PB1     ------> ADC1_IN9 
     */
-    GPIO_InitStruct.Pin = ATTACK_1_Pin|DECAY_1_Pin|SUSTAIN_1_Pin|RELEASE_1_Pin 
-                          |ATTACK_2_Pin|DECAY_2_Pin;
+    GPIO_InitStruct.Pin = ATTACK_1_Pin|SUSTAIN_1_Pin|DECAY_1_Pin|ATTACK_2_Pin 
+                          |RELEASE_1_Pin|DECAY_2_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -199,8 +199,8 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
     PB0     ------> ADC1_IN8
     PB1     ------> ADC1_IN9 
     */
-    HAL_GPIO_DeInit(GPIOA, ATTACK_1_Pin|DECAY_1_Pin|SUSTAIN_1_Pin|RELEASE_1_Pin 
-                          |ATTACK_2_Pin|DECAY_2_Pin);
+    HAL_GPIO_DeInit(GPIOA, ATTACK_1_Pin|SUSTAIN_1_Pin|DECAY_1_Pin|ATTACK_2_Pin 
+                          |RELEASE_1_Pin|DECAY_2_Pin);
 
     HAL_GPIO_DeInit(GPIOB, SUSTAIN_2_Pin|RELEASE_2_Pin);
 

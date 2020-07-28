@@ -73,14 +73,21 @@ typedef enum ADSR_Range_Enumeration
 --| DESCRIPTION: the debounce count used for discrete gate and trigger inputs
 --| TYPE: uint
 */
-#define GATE_AND_TRIGGER_DEBOUNCE_COUNT (10)
+#define GATE_AND_TRIGGER_DEBOUNCE_COUNT (5)
 
 /*
 --| NAME: RANGE_SWITCH_DEBOUNCE_COUNT
 --| DESCRIPTION: the debounce count used for discrete range switch inputs
 --| TYPE: uint
 */
-#define RANGE_SWITCH_DEBOUNCE_COUNT (10)
+#define RANGE_SWITCH_DEBOUNCE_COUNT (25)
+
+/*
+--| NAME: TOTAL_NUM_ADSR_INPUTS
+--| DESCRIPTION: the total number of ADSR inputs. A, D, S, and R inputs for 2 ADSRs
+--| TYPE: uint
+*/
+#define TOTAL_NUM_ADSR_INPUTS (NUM_ADSR_INPUT_TYPES * NUM_ADSRs)
 
 /* USER CODE END PD */
 
@@ -195,14 +202,14 @@ Discrete_Input_t range_switch[NUM_ADSRs] =
 --| DESCRIPTION: the raw potentiometer readings, filled via DMA
 --| TYPE: uint32_t
 */
-uint32_t raw_potentiometer_reading[NUM_ADSR_INPUT_TYPES * NUM_ADSRs];
+uint32_t raw_potentiometer_reading[TOTAL_NUM_ADSR_INPUTS];
 
 /*
 --| NAME: scaled_potentiometer_reading
 --| DESCRIPTION: the scaled potentiometer readings
 --| TYPE: uint32_t
 */
-uint32_t scaled_potentiometer_reading[NUM_ADSR_INPUT_TYPES * NUM_ADSRs];
+uint32_t scaled_potentiometer_reading[TOTAL_NUM_ADSR_INPUTS];
 
 /*
 --| NAME: adsr_range
@@ -274,6 +281,7 @@ Function Name:
 
 Function Description:
     Poll the range switches and set the range for each ADSR.
+
 Parameters:
     None.
 
@@ -381,6 +389,7 @@ int main(void)
   MX_DAC_Init();
   MX_TIM7_Init();
   MX_TIM2_Init();
+  MX_TIM10_Init();
   /* USER CODE BEGIN 2 */
 
   // fill the adsr look up tables
@@ -396,12 +405,13 @@ int main(void)
   HAL_DAC_Start(&hdac, DAC_CHANNEL_1);
   HAL_DAC_Start(&hdac, DAC_CHANNEL_2);
 
-  // start the sample-rate interrupt timer
+  // start the sample-rate interrupt timers
   HAL_TIM_Base_Start_IT(&htim7);
+  HAL_TIM_Base_Start_IT(&htim10);
 
   // start the ADC DMA timer and start the ADC in DMA mode
   HAL_TIM_Base_Start(&htim2);
-  HAL_ADC_Start_DMA(&hadc1, raw_potentiometer_reading, (NUM_ADSR_INPUT_TYPES * NUM_ADSRs));
+  HAL_ADC_Start_DMA(&hadc1, raw_potentiometer_reading, TOTAL_NUM_ADSR_INPUTS);
 
   /* USER CODE END 2 */
 
@@ -463,33 +473,30 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 
 /*
- * The timer interrupt is the faster periodic interrupt.
- * This interrupt must be configured to fire at the ADSR
- * sample rate. Each interrupt we tick the ADSRs, poll the
- * gate/trigger inputs, and update the DACs.
+	htim7 is the faster sample rate interrupt source, it fires at the
+	system sample rate for the ADSRs. When htim7 fires we calculate the
+	current ADSR values and update the DACs.
+
+	htim10 is a slower interrupt for reading the range switches and
+	processing the pots.
+
+	htim7 has higher priority than htim10, to keep a consistent periodic
+	sample rate for the time critical stuff.
  */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	// toggling the debug pin is just for debugging, will remove later
-	HAL_GPIO_WritePin(DEBUG_PIN_1_GPIO_Port, DEBUG_PIN_1_Pin, GPIO_PIN_SET);
-	poll_gate_and_trigger_inputs();
-	tick_ADSRs();
-	update_DACs();
-	HAL_GPIO_WritePin(DEBUG_PIN_1_GPIO_Port, DEBUG_PIN_1_Pin, GPIO_PIN_RESET);
-}
-
-/*
- * The systick interrupt handles the things that don't need to be updated at
- * the full ADSR sample rate. This is called at a frequency of 1kHz.
- */
-void HAL_SYSTICK_Callback(void)
-{
-	// toggling the debug pin is just for debugging, will remove later
-	HAL_GPIO_WritePin(DEBUG_PIN_2_GPIO_Port, DEBUG_PIN_2_Pin, GPIO_PIN_SET);
-	poll_range_switches();
-	scale_potentiometer_readings();
-	update_ADSR_inputs();
-	HAL_GPIO_WritePin(DEBUG_PIN_2_GPIO_Port, DEBUG_PIN_2_Pin, GPIO_PIN_RESET);
+	if (htim == &htim7)
+	{
+		poll_gate_and_trigger_inputs();
+		tick_ADSRs();
+		update_DACs();
+	}
+	else if (htim == &htim10)
+	{
+		poll_range_switches();
+		scale_potentiometer_readings();
+		update_ADSR_inputs();
+	}
 }
 
 void tick_ADSRs(void)
@@ -563,42 +570,52 @@ void scale_potentiometer_readings(void)
 	For the long range, we will use the same exponent, but also multiply by a constant value
 	to shift the range up so that it covers longer times.
 
-	The sustain values are simply linearly scaled up from 12 bits to 32 bits.
+	The sustain values are simply linearly scaled from 12 bits to the range [0, 1000] representing
+	0% to 100% sustain.
+
+	To reduce noise, an lsb or two may be shifted away.
+
+	This routine takes a long time to complete and could certainly be optimized.
 	*/
 
 	const double desired_max_value = 5000.0;
-	const double ADC_full_scale = 4095.0;
+	const uint32_t num_ADC_bits = 12;
+	const uint32_t num_ADC_bits_to_ignore = 2;
+	const uint32_t num_effective_ADC_bits = num_ADC_bits - num_ADC_bits_to_ignore;
+	const double ADC_full_scale = (double)(1 << num_effective_ADC_bits);
 	const double exponent = log(desired_max_value) / log(ADC_full_scale);
+	const uint32_t short_scaler = 1;
+	const uint32_t long_scaler = 5;
 
 	uint32_t range_scaler;
 
 	if (adsr_range[0] == ADSR_RANGE_SHORT)
 	{
-		range_scaler = 1;
+		range_scaler = short_scaler;
 	}
 	else // ADSR 1 is in long range mode
 	{
-		range_scaler = 5;
+		range_scaler = long_scaler;
 	}
 
-	scaled_potentiometer_reading[0] = pow(raw_potentiometer_reading[0] + 1, exponent) * range_scaler;
-	scaled_potentiometer_reading[1] = pow(raw_potentiometer_reading[1] + 1, exponent) * range_scaler;
-	scaled_potentiometer_reading[2] = raw_potentiometer_reading[2] << 20;
-	scaled_potentiometer_reading[3] = pow(raw_potentiometer_reading[3] + 1, exponent) * range_scaler;
+	scaled_potentiometer_reading[0] = pow((raw_potentiometer_reading[0] >> num_ADC_bits_to_ignore) + 1, exponent) * range_scaler;
+	scaled_potentiometer_reading[1] = pow((raw_potentiometer_reading[1] >> num_ADC_bits_to_ignore) + 1, exponent) * range_scaler;
+	scaled_potentiometer_reading[2] = ((raw_potentiometer_reading[2] >> num_ADC_bits_to_ignore) * 1000) / (1 << num_effective_ADC_bits);
+	scaled_potentiometer_reading[3] = pow((raw_potentiometer_reading[3] >> num_ADC_bits_to_ignore) + 1, exponent) * range_scaler;
 
 	if (adsr_range[1] == ADSR_RANGE_SHORT)
 	{
-		range_scaler = 1;
+		range_scaler = short_scaler;
 	}
 	else // ADSR 2 is in long range mode
 	{
-		range_scaler = 5;
+		range_scaler = long_scaler;
 	}
 
-	scaled_potentiometer_reading[4] = pow(raw_potentiometer_reading[4] + 1, exponent) * range_scaler;
-	scaled_potentiometer_reading[5] = pow(raw_potentiometer_reading[5] + 1, exponent) * range_scaler;
-	scaled_potentiometer_reading[6] = raw_potentiometer_reading[6] << 20;
-	scaled_potentiometer_reading[7] = pow(raw_potentiometer_reading[7] + 1, exponent) * range_scaler;
+	scaled_potentiometer_reading[4] = pow((raw_potentiometer_reading[4] >> num_ADC_bits_to_ignore) + 1, exponent) * range_scaler;
+	scaled_potentiometer_reading[5] = pow((raw_potentiometer_reading[5] >> num_ADC_bits_to_ignore) + 1, exponent) * range_scaler;
+	scaled_potentiometer_reading[6] = ((raw_potentiometer_reading[6] >> num_ADC_bits_to_ignore) * 1000) / (1 << num_effective_ADC_bits);
+	scaled_potentiometer_reading[7] = pow((raw_potentiometer_reading[7] >> num_ADC_bits_to_ignore) + 1, exponent) * range_scaler;
 }
 
 void update_ADSR_inputs(void)

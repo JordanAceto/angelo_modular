@@ -58,7 +58,7 @@
 --| DESCRIPTION: a mask to isolate the fractional part of the accumulator.
 --| TYPE: uint32_t
 */
-#define ACCUMULATOR_FRACTION_MASK ~((1u << NUM_FRACTIONAL_BITS_IN_ACCUMULATOR) - 1u)
+#define ACCUMULATOR_FRACTION_MASK ((1u << NUM_FRACTIONAL_BITS_IN_ACCUMULATOR) - 1u)
 
 /*
 --| NAME: ADSR_LOOK_UP_TABLE_TABLE_SIZE
@@ -503,13 +503,14 @@ void Calculate_Current_ADSR_Value(ADSR_t * p_ADSR)
     uint32_t y2;
 
     const uint32_t LUT_index = p_ADSR->phase_accumulator >> NUM_FRACTIONAL_BITS_IN_ACCUMULATOR;
+    const uint32_t next_LUT_index = (LUT_index + 1) < ADSR_LOOK_UP_TABLE_TABLE_SIZE ? (LUT_index + 1) : (ADSR_LOOK_UP_TABLE_TABLE_SIZE - 1);
     const uint32_t accumulator_fraction = p_ADSR->phase_accumulator & ACCUMULATOR_FRACTION_MASK;
 
     switch (p_ADSR->state)
     {
     case ADSR_STATE_TYPE_ATTACK:
         y1 = ADSR_ATTACK_TABLE[LUT_index];
-        y2 = ADSR_ATTACK_TABLE[(LUT_index + 1u) % ADSR_LOOK_UP_TABLE_TABLE_SIZE];
+        y2 = ADSR_ATTACK_TABLE[next_LUT_index];
 
         coefficient = MAX_ADSR_VALUE - p_ADSR->value_when_gate_on_recieved;
         sample      = Linear_Interpolation(y1, y2, accumulator_fraction);
@@ -518,7 +519,7 @@ void Calculate_Current_ADSR_Value(ADSR_t * p_ADSR)
 
     case ADSR_STATE_TYPE_DECAY:
         y1 = ADSR_DECAY_TABLE[LUT_index];
-        y2 = ADSR_DECAY_TABLE[(LUT_index + 1u) % ADSR_LOOK_UP_TABLE_TABLE_SIZE];
+        y2 = ADSR_DECAY_TABLE[next_LUT_index];
 
         coefficient = MAX_ADSR_VALUE - (p_ADSR->input[ADSR_INPUT_TYPE_SUSTAIN_LEVEL_percent_x_10] * SUSTAIN_SCALER);
         sample      = Linear_Interpolation(y1, y2, accumulator_fraction);
@@ -533,7 +534,7 @@ void Calculate_Current_ADSR_Value(ADSR_t * p_ADSR)
 
     case ADSR_STATE_TYPE_RELEASE:
         y1 = ADSR_DECAY_TABLE[LUT_index];
-        y2 = ADSR_DECAY_TABLE[(LUT_index + 1u) % ADSR_LOOK_UP_TABLE_TABLE_SIZE];
+        y2 = ADSR_DECAY_TABLE[next_LUT_index];
 
         coefficient = p_ADSR->value_when_gate_off_recieved;
         sample      = Linear_Interpolation(y1, y2, accumulator_fraction);
@@ -559,9 +560,9 @@ void Calculate_Current_ADSR_Value(ADSR_t * p_ADSR)
 
 uint32_t Linear_Interpolation(uint32_t y1, uint32_t y2, uint32_t fraction)
 {
-    const uint32_t delta_y = y2 - y1;
+    const int64_t delta_y = (int64_t)y2 - y1;
 
-    const uint32_t fractional_part = (fraction * delta_y) >> NUM_FRACTIONAL_BITS_IN_ACCUMULATOR;
+    const int64_t fractional_part = (fraction * delta_y) / (16777216);
 
     return y1 + fractional_part;
 }
