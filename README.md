@@ -1,5 +1,7 @@
 ## Custom 5u format modular synth with 12 modules
 
+![](./pics/modular_angle.JPG?raw=true "pics")
+
 ### Contains:
 - VCO with 5-pulser waveshaper
 - VCO with two sub-oscillators
