@@ -587,6 +587,10 @@ void scale_potentiometer_readings(void)
 	const uint32_t short_scaler = 1;
 	const uint32_t long_scaler = 5;
 
+	// the decay and release times feel better if they are longer than the attack, because the attack curve is truncated
+	// and decay/release curves are not
+	const uint32_t decay_and_release_scaler = 10;
+
 	uint32_t range_scaler;
 
 	if (adsr_range[0] == ADSR_RANGE_SHORT)
@@ -599,9 +603,9 @@ void scale_potentiometer_readings(void)
 	}
 
 	scaled_potentiometer_reading[0] = pow((raw_potentiometer_reading[0] >> num_ADC_bits_to_ignore) + 1, exponent) * range_scaler;
-	scaled_potentiometer_reading[1] = pow((raw_potentiometer_reading[1] >> num_ADC_bits_to_ignore) + 1, exponent) * range_scaler;
+	scaled_potentiometer_reading[1] = pow((raw_potentiometer_reading[1] >> num_ADC_bits_to_ignore) + 1, exponent) * range_scaler * decay_and_release_scaler;
 	scaled_potentiometer_reading[2] = ((raw_potentiometer_reading[2] >> num_ADC_bits_to_ignore) * 1000) / (1 << num_effective_ADC_bits);
-	scaled_potentiometer_reading[3] = pow((raw_potentiometer_reading[3] >> num_ADC_bits_to_ignore) + 1, exponent) * range_scaler;
+	scaled_potentiometer_reading[3] = pow((raw_potentiometer_reading[3] >> num_ADC_bits_to_ignore) + 1, exponent) * range_scaler * decay_and_release_scaler;
 
 	if (adsr_range[1] == ADSR_RANGE_SHORT)
 	{
@@ -613,9 +617,9 @@ void scale_potentiometer_readings(void)
 	}
 
 	scaled_potentiometer_reading[4] = pow((raw_potentiometer_reading[4] >> num_ADC_bits_to_ignore) + 1, exponent) * range_scaler;
-	scaled_potentiometer_reading[5] = pow((raw_potentiometer_reading[5] >> num_ADC_bits_to_ignore) + 1, exponent) * range_scaler;
+	scaled_potentiometer_reading[5] = pow((raw_potentiometer_reading[5] >> num_ADC_bits_to_ignore) + 1, exponent) * range_scaler * decay_and_release_scaler;
 	scaled_potentiometer_reading[6] = ((raw_potentiometer_reading[6] >> num_ADC_bits_to_ignore) * 1000) / (1 << num_effective_ADC_bits);
-	scaled_potentiometer_reading[7] = pow((raw_potentiometer_reading[7] >> num_ADC_bits_to_ignore) + 1, exponent) * range_scaler;
+	scaled_potentiometer_reading[7] = pow((raw_potentiometer_reading[7] >> num_ADC_bits_to_ignore) + 1, exponent) * range_scaler * decay_and_release_scaler;
 }
 
 void update_ADSR_inputs(void)
